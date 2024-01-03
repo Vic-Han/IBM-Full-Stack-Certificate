@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Portfolio </title>
+        <link rel ="stylesheet" href = "index.css">
+        <script src = "recommendations.js" defer></script>
+    </head>
+    <body>
+        <div id = "navbar">
+            <div class = "personal-info">
+                <div class = "name"> Alex Smith </div>
+                <div class = "email"> &#9993; Asmith@example.com </div>
+                <div class = "phone"> &#9742; 234-345-4567 </div>
+            </div>
+            <nav class = "nav-container"> 
+                <a class = "link" href="#about-section"> About </a>
+                <a class = "link" href="#skill-section"> Skills </a>
+                <a class = "link" href="#project-section"> Projects </a>
+                <a class = "link" href="#recommendation-section"> Recommendations </a>
+            </nav>
+        </div>
+        <section id = "about-section">
+            <img class = "main-image" src = "assets/main.jpg">
+            <div class = "about-wrapper">
+                <h1 class = "section-header about-header"> Hello, my name is Alex Smith! 👋</h1>
+                <p class = "about-text"> I am a software engineer with several years of experience in the industry. 
+                    I have worked on a variety of projects, ranging from back end web development to low-level systems programming. 
+                    I am currently looking for new opportunities to expand my skillset and work on interesting projects. </p>
+            </div>
+        </section>
+        <section id = "skill-section">
+            <h1 class = "section-header"> Skills: </h1>
+            <div class = "skill-list"> 
+                <div class = "skill">
+                    <img class = "skill-img rust-img" src= "assets/rust.png">
+                    <div class = "skill-name"> Rust </div>
+                    <div class = "skill-experience"> 2 years experience</div>
+            </div>
+            <div class = "skill">
+                <img class = "skill-img" src= "assets/c++.png">
+                <div class = "skill-name"> C++ </div>
+                <div class = "skill-experience"> 3 years experience</div>
+            </div>
+            <div class = "skill">
+                <img class = "skill-img" src = "assets/go.png">
+                <div class = "skill-name"> Go </div>
+                <div class = "skill-experience"> 2.5 years experience</div>
+            </div>
+            <div class = "skill">
+                <img class = "skill-img" src="assets/cassandra.png">
+                <div class = "skill-name"> CassandraDB </div>
+                <div class = "skill-experience"> 1 year experience</div>
+            </div>
+            <div class = "skill">
+                <img class = "skill-img" src = "assets/postgres.png">
+                <div class = "skill-name"> PostgreSQL </div>
+                <div class = "skill-experience"> 1 year experience</div>
+            </div>
+            <div class = "skill">
+                <img class = "skill-img" src = "assets/mongodb.png">
+                <div class = "skill-name"> MongoDB </div>
+                <div class = "skill-experience"> 2 years experience</div>
+            </div>
+        </section>
+        <section id = "project-section">
+            <h1 class = "section-header"> Projects: </h1>
+            <div class = "project-list">
+                <div class = "project">
+                    <div class = "project-name"> JaneSQL </div>
+                    <div class = "project-description"> - Implemented SQL database from scratch using C++ </div>
+                    <div class = "project-description"> - Optimized search queries and joins using multithreading </div>
+                </div>
+                <div class = "project">
+                    <div class = "project-name"> Scheduler </div>
+                    <div class = "project-description"> - Used Rust to search and sort possible schedules based on event times and conflicts </div>
+                </div>
+                <div class = "project">
+                    <div class = "project-name"> Message Server </div>
+                    <div class = "project-description"> - Used Go, CassandraDB, and PostgreSQL to build a real time chat server </div>
+                    <div class = "project-description"> - Added concurrency support while eliminating deadlocks and race conditions</div>
+                </div>
+            </div>
+        </section>
+        <section id = "recommendation-section">
+            <h1 class = "section-header"> Recommendations: </h1>
+            <div id = "recommendation-list"> 
+                <div class = "recommendation">
+                    <div class="reference-name"> John Williamson </div>
+                    <div class = "recommendation-text"> 
+                        Alex is a highly skilled developer with a knack for solving complex problems. 
+                        She was a valuable member of our team and contributed significantly to our projects. 
+                    </div>
+                </div>
+                <div class = "recommendation">
+                    <div class="reference-name"> Mary Doe </div>
+                    <div class = "recommendation-text"> 
+                        Alex's ability to grasp new concepts and apply them in her work is truly impressive. 
+                        She is a dedicated and reliable team member. 
+                    </div>
+                </div>
+                <div class = "recommendation">
+                    <div class="reference-name"> Robert Johnson </div>
+                    <div class = "recommendation-text"> 
+                        Alex's commitment to her team and the quality of her work is second to none.  
+                        She is always ready to take on new challenges and consistently gets the job done. </div>
+                </div>
+            </div>
+            <div class = "recommendation-field">
+                <div class = "recommendation-header"> Have a recommendation? </div>
+                <input type = "text" placeholder="Name" id = "name-input">
+                <textarea placeholder="Message" id = "recommendation-text"></textarea>
+                <button class = "submit-recommendation" onclick = "submit_recommendation()"> Submit </button>
+            </div>
+        </section>
+        
+        <div id = "popup" class = "invisible">
+            <div class="popup-content">
+                😊 <br> Thank you for your input!<br>
+                <button class="close-popup" onclick= "close_popup()"> ok </button>
+            </div> 
+        </div>
+        <a href = "#navbar" id ="home-arrow"> 
+            <div class = "arrow-line"></div>
+        </a>
+    </body>
+</html>
