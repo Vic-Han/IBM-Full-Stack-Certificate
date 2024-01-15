@@ -7,7 +7,7 @@ function MainScreen() {
     const [currency, setCurrency] = useState('$');
     const [currencytext, setCurrencyText] = useState('($ Dollar)');
     const [spendInput, setSpendInput] = useState(0);
-    const [selectedDept, setSelectedDept] = useState('');
+    const [selectedDept, setSelectedDept] = useState('Choose...');
     const [selectedOption, setSelectedOption] = useState('Add');
     const default_departments = [
         {
@@ -92,7 +92,7 @@ function MainScreen() {
         "Sales": 4,
     }
     const updateAlloc = () =>{
-        if(selectedDept === ''){
+        if(selectedDept === 'Choose...'){
             return;
         }
         if(spendInput <= 0){
@@ -169,7 +169,7 @@ function MainScreen() {
                 <div>
                     <label className='change-allocation-label'> Department </label>
                     <select className='change-allocation-select' value = {selectedDept} onChange = {e => setSelectedDept(e.target.value)}>
-                        <option value="">  </option>
+                        <option value="Choose..."> Choose... </option>
                         {departments.map((department, index) => (
                             <option value={department.name}>{department.name}</option>
                         ))}
