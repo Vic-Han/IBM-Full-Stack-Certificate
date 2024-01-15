@@ -1,0 +1,166 @@
+
+
+.header {
+    font-size: 50px;
+    margin: 30px;
+}
+
+.budget-overview-grid {
+    display: flex;
+    flex-direction: row;
+}
+
+.set-budget-section {
+    display: flex;
+    flex-direction: row;
+    background-color: lightgrey;
+    align-items: center;
+    width: 300px;
+    border-radius: 5px;
+    margin: 25px;
+    padding: 10px;
+}
+
+.set-budget-text {
+    font-size: 23px;
+    margin: 0px 10px;
+}
+
+.budget-input {
+    border: none;
+    font-size: 23px;
+    width: 60%;
+}
+
+.remaining-budget {
+    font-size: 25px;
+    background-color: lightgreen;
+    width: 300px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 25px;
+    padding: 10px;
+}
+
+.spent-budget {
+    font-size: 25px;
+    background-color: lightblue;
+    width: 300px;
+    border-radius: 5px;
+    text-align: center;
+    margin: 25px;
+    padding: 10px;
+}
+
+.currency-select-wrapper {
+    display: flex;
+    flex-direction: row;
+    background-color: lightgreen;
+    align-items: center;
+    width: 300px;
+    border-radius: 5px;
+    margin: 25px;
+    padding: 10px;
+}
+
+.currency-select-text {
+    font-size: 25px;
+    width: 40%;
+    text-align: end;
+    margin: 0px;
+}
+
+.currency-select {
+    border: none;
+    font-size: 25px;
+    background-color: lightgreen;
+    width: 50%;
+}
+
+.allocation-header {
+    font-size : 30px;
+    margin: 20px;
+}
+
+.allocation {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0px;
+}
+
+.allocation-name {
+    font-size: 24px;
+    width: 200px;
+    margin: 0px 10px;
+}
+
+.allocation-amount {
+    font-size: 24px;
+    margin: 0px 100px;
+    width: 100px;
+}
+
+.increment-btn {
+    padding: 20px;
+    background-color: greenyellow;
+    border-radius: 50%;
+    font-size: 25px;
+    aspect-ratio: 1/1;
+    margin: 0px 100px;
+}
+
+.decrement-btn {
+    font-size: 25px;
+    padding: 20px;
+    background-color: red;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    margin: 0px 100px;
+}
+
+.cancel-btn {
+    font-size: 10px;
+    padding: 5px;
+    aspect-ratio: 1/1;
+    background-color: red;
+    border-radius: 50%;
+    margin: 0px 100px;
+   
+}
+
+.change-allocation-header {
+    font-size: 35px;
+    margin: 20px;
+}
+
+.change-allocation-section {
+    display: flex;
+    width: 1000px;
+    flex-direction: row;
+   
+}
+
+.change-allocation-label {
+    background-color: lightgrey;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0px;
+}
+
+.change-allocation-select {
+    height: inherit;
+    margin-right: 60px;
+}
+
+.spent-input {
+    border: none;
+    font-size: 23px;
+    width: 200px;;
+}
+
+.save-btn {
+    background-color: rgb(10, 163, 163);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
