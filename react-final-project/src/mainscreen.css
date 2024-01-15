@@ -3,6 +3,7 @@
 .header {
     font-size: 50px;
     margin: 30px;
+    font-weight: bold;
 }
 
 .budget-overview-grid {
@@ -80,12 +81,15 @@
 .allocation-header {
     font-size : 30px;
     margin: 20px;
+    font-weight: bold;
 }
 
 .allocation {
     display: flex;
     flex-direction: row;
     margin: 10px 0px;
+    border-bottom : 2px solid lightgrey;
+    width:1500px;
 }
 
 .allocation-name {
@@ -96,46 +100,64 @@
 
 .allocation-amount {
     font-size: 24px;
-    margin: 0px 100px;
+    margin: 0px 140px;
     width: 100px;
 }
-
+.allocation-grid{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0px;
+    border-bottom : 2px solid lightgrey;
+    width: 1500px;
+}
+.allocation-grid-header{
+    font-size: 24px;
+    width: 200px;
+    margin: 0px 50px;
+    font-weight: bold;
+}
 .increment-btn {
-    padding: 20px;
+    padding: 5px;
     background-color: greenyellow;
     border-radius: 50%;
-    font-size: 25px;
+    font-size: 40px;
     aspect-ratio: 1/1;
+    color: white;
     margin: 0px 100px;
 }
 
 .decrement-btn {
-    font-size: 25px;
-    padding: 20px;
+    font-size: 40px;
+    padding: 5px;
     background-color: red;
     border-radius: 50%;
     aspect-ratio: 1/1;
-    margin: 0px 100px;
+    margin: 0px 200px;
+    color: white;
 }
 
 .cancel-btn {
     font-size: 10px;
     padding: 5px;
     aspect-ratio: 1/1;
-    background-color: red;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    background-color: black;
     border-radius: 50%;
-    margin: 0px 100px;
+    margin: 10px 20px;
+    color: white;
    
 }
 
 .change-allocation-header {
     font-size: 35px;
     margin: 20px;
+    font-weight: bold;
 }
 
 .change-allocation-section {
     display: flex;
-    width: 1000px;
     flex-direction: row;
    
 }
@@ -150,11 +172,15 @@
 .change-allocation-select {
     height: inherit;
     margin-right: 60px;
+    font-size: 25px;
+    padding: 4px 6px;
 }
-
+.currency-label{
+    font-size: 25px;
+    margin: 0px 0px;
+}
 .spent-input {
-    border: none;
-    font-size: 23px;
+    font-size: 25px;
     width: 200px;;
 }
 
@@ -162,5 +188,6 @@
     background-color: rgb(10, 163, 163);
     color: white;
     padding: 10px;
+    margin: 0px 20px;
     border-radius: 5px;
 }
