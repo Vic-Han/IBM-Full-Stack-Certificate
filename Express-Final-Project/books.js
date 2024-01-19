@@ -5,7 +5,9 @@ const bookList = [
         author: "David Goggins",
         title: "Can't Hurt Me",
         isbn: 1,
-        reviews: {}
+        reviews: {
+            "username1" : "great read"
+        }
     },
     {
         author: "J. Kenji Lopez-Alt",
@@ -20,4 +22,6 @@ const bookList = [
         reviews: {}
     }
 ]
-export default bookList;
+module.exports = { 
+    bookList
+};

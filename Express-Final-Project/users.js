@@ -8,3 +8,5 @@ const userList =[
         password: "password2",
     }
 ]
+
+module.exports = { userList };
