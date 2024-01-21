@@ -3,17 +3,6 @@ const app = express();
 const port = 3000;
 const {bookList} = require('./books.js');
 const {userList} = require('./users.js');
-// Middleware for books
-const booksMiddleware = (req, res, next) => {
-    // Middleware logic for books
-    next();
-};
-
-// Middleware for users
-const usersMiddleware = (req, res, next) => {
-    // Middleware logic for users
-    next();
-};
 
 async function getBooks() {
     const books = await bookList;
@@ -21,11 +10,21 @@ async function getBooks() {
 }
 async function getBookByISBN(isbn) {    
     const books = await bookList;
-    return books.find(book => book.isbn === isbn);
+    for(let i = 0; i < books.length; i++) {
+        if(books[i].isbn == isbn) {
+            return books[i];
+        }
+    }
+    return null;
 }
 async function getBookByAuthor(author) {
     const books = await bookList;
-    return books.filter(book => book.author === author);
+    for(let i = 0; i < books.length; i++) {
+        if(books[i].author == author) {
+            return books[i];
+        }
+    }
+    return null;
 }
 async function getBookByTitle(title) {
     const books = await bookList;
@@ -39,46 +38,52 @@ async function loginUser(username,password) {
     const users = await userList;
     return users.find(user => user.username === username && user.password === password) !== undefined;
 }
-async function addReview(username, isbn, review) {
-    const book = await getBookByISBN(isbn);
-    book.reviews[username] = review;
-    return true;
-}
+
 async function editReview(username, isbn, review) {
-    const book = await getBookByISBN(isbn);
-    book.reviews[username] = review;
-    return true;
+    const books = await bookList;
+    for(let i = 0; i < books.length; i++) {
+        if(books[i].isbn == isbn) {
+            books[i].reviews[username] = review;
+            return true;
+        }
+    }
+    return false;
 }
 async function deleteReview(username, isbn) {
-    const book = await getBookByISBN(isbn);
-    delete book.reviews[username];
-    return true;
+    const books = await bookList;
+    for(let i = 0; i < books.length; i++) {
+        if(books[i].isbn == isbn) {
+            delete books[i].reviews[username];
+            return true;
+        }
+    }
+    return false;
 }
-booksMiddleware.get('/all', (req, res) => {
+app.get('/allbooks', (req, res) => {
     getBooks().then((books) => {
         res.send(books);
     }); 
 });
-booksMiddleware.get('/isbn-lookup/:isbn', (req, res) => {
+app.get('/isbn-lookup/:isbn', (req, res) => {
     const book = getBookByISBN(req.params.isbn);
     book.then((book) => {
         res.send(book);
     });
 });
-booksMiddleware.get('/author-lookup/', (req, res) => {
-    const books = getBookByAuthor(req.query.author);
+app.get('/author-lookup/:author', (req, res) => {
+    const books = getBookByAuthor(req.params.author);
     books.then((books) => {
         res.send(books);
     });
 });
-booksMiddleware.get('/book-review/:isbn/:username', (req, res) => {
+app.get('/book-review/:isbn/:username', (req, res) => {
     const book = getBookByISBN(req.params.isbn);
     book.then((book) => {
-        res.send(book.reviews[req.params.username]);
+        res.send({"review":book.reviews[req.params.username]});
     });
 });
-booksMiddleware.put('/edit-review/:user/:isbn/:new-text', (req, res) => {
-    editReview(req.params.user, req.params.isbn, req.params.new-text).then((edited) => {
+app.put('/edit-review/:user/:isbn/:nexttext', (req, res) => {
+    editReview(req.params.user, req.params.isbn, req.params.newtext).then((edited) => {
             if(!edited) {  
                 res.send({message: "Review not deleted"});
                 return;
@@ -86,7 +91,7 @@ booksMiddleware.put('/edit-review/:user/:isbn/:new-text', (req, res) => {
             res.send({message: "Review edited successfully"});
         });
 });
-booksMiddleware.delete('/delete-review/:user/:isbn', (req, res) => {
+app.delete('/delete-review/:user/:isbn', (req, res) => {
     deleteReview(req.params.user, req.params.isbn).then((deleted) => {
         if(!deleted) {  
             res.send({message: "Review not deleted"});
@@ -95,18 +100,18 @@ booksMiddleware.delete('/delete-review/:user/:isbn', (req, res) => {
         res.send({message: "Review deleted successfully"});
     });
 });
-booksMiddleware.get('/lookup-title/:title', (req, res) => {
+app.get('/lookup-title/:title', (req, res) => {
     const book = getBookByTitle(req.params.title);
     book.then((book) => {
         res.send(book);
     });
 });
-usersMiddleware.get('/register/:username/:password', (req, res) => {
+app.post('/register/:username/:password', (req, res) => {
     registerUser(req.params.username, req.params.password).then((user) => {
         res.send({message: "User registered successfully", user: user});
     });
 });
-usersMiddleware.get('/login/:username/:password', (req, res) => {
+app.get('/login/:username/:password', (req, res) => {
     loginUser(req.params.username, req.params.password).then((found) => {
         if(!found) {
             res.send({message: "User not found"});
@@ -117,8 +122,6 @@ usersMiddleware.get('/login/:username/:password', (req, res) => {
     });
 });
 
-app.use('/books', booksMiddleware);
-app.use('/users', usersMiddleware);
 
 
 

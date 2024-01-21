@@ -34,6 +34,7 @@ function MainScreen() {
     const [departments, setDepartments] = useState(default_departments);
     const changeBudget = (value) => {
         if(value < 0){
+            alert("Budget cannot be negative");
             return;
         }
         setTotalBudget(value);
@@ -41,6 +42,7 @@ function MainScreen() {
     };
     const changeAllocation = (value, index) => {
         if(value > totalremaining){
+            alert("Cannot allocate more than remaining budget");
             return;
         }
         
@@ -56,18 +58,17 @@ function MainScreen() {
         setTotalAllocated(totalallocated + value);
         setTotalRemaining(totalremaining - value);
     };
-    const deleteDepartment = (index) =>{
-
-    };
     const handleBudgetChange = e =>{
         if(e.target.value > totalbudget){
             if(totalbudget >= 20000){
+                alert("Budget cannot exceed 20000")
                 return;
             }
             changeBudget(totalbudget + 10);
         }
         else{
             if(totalbudget <= 0 || totalbudget <= totalallocated){
+                alert("Budget cannot be less than the allocated amount")
                 return;
             }
             changeBudget(totalbudget - 10);
@@ -103,6 +104,7 @@ function MainScreen() {
         if(selectedOption === "Subtract"){
             if(department.allocated < spendInput){
                 setSpendInput(0);
+                
                 return;
             }
             department.allocated = department.allocated - spendInput;
@@ -111,6 +113,7 @@ function MainScreen() {
         }
         else if (selectedOption === "Add"){
             if(totalremaining < spendInput){
+                alert("Not enough budget left");
                 setSpendInput(0);
                 return;
             }
@@ -139,10 +142,10 @@ function MainScreen() {
                     <p className='currency-select-text'> Currency: </p>
                     <select className = "currency-select" value={currencytext} onChange={handleCurrencyChange}>
                         
-                        <option value = "($ Dollar)"> $ Dollar </option>
-                        <option value= "(€ Pound)"> € Pound </option>
-                        <option value= "(£ Euro)"> £ Euro </option>
-                        <option value= "(₹ Ruppee)"> ₹ Ruppee </option>
+                        <option className = "currency-option" value = "($ Dollar)"> $ Dollar </option>
+                        <option className = "currency-option" value = "(€ Pound)"> € Pound </option>
+                        <option className = "currency-option" value = "(£ Euro)"> £ Euro </option>
+                        <option className = "currency-option" value = "(₹ Ruppee)"> ₹ Ruppee </option>
 
                     </select>
                 </div>

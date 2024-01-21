@@ -46,7 +46,7 @@
 .spent-budget {
     font-size: 25px;
     background-color: lightblue;
-    width: 300px;
+    width: 310px;
     border-radius: 5px;
     text-align: center;
     margin: 25px;
@@ -77,7 +77,14 @@
     background-color: lightgreen;
     width: 50%;
 }
-
+.currency-option{
+    background-color: lightgreen;
+    color: white;
+}
+.currency-option:hover{
+    background-color: white;
+    color: black
+}
 .allocation-header {
     font-size : 30px;
     margin: 20px;
